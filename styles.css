@@ -1,0 +1,36 @@
+
+		#playlist{
+            list-style: none;
+        }
+        #playlist li a{
+            color:black;
+            text-decoration: none;
+            font-size: 20px;
+            
+        }
+        #playlist .current-song a{
+            color:blue;
+        }
+        
+        a {
+			font-size: 20px;
+			text-decoration: none;
+			
+		}
+		
+		#now_playing{
+			font-size: 20px;
+			color:red;
+			
+			
+		}
+		
+		div.fixed {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 300px;
+  border: 3px solid #73AD21;
+}
+		
+    
