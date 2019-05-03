@@ -16,7 +16,8 @@
  <audio src="" controls id="audioPlayer">
         Sorry, your browser doesn't support html5!
     </audio>
-    <br><br>
+    <p>Shuffling...</p>
+    
      <p id="now_playing"></p>
  
 
@@ -173,7 +174,8 @@ class abrowser
  
  print "<br>\n";
  print '<ul id="playlist">';
-   
+
+ /*
 $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dr->getPath()));
 $sit = new SortedIterator($iterator);
 
@@ -184,7 +186,32 @@ foreach ($sit as $file) {
 }
 }
   print ' </ul>';
-  
+  * */
+$rii = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dr->getPath()));
+$data = iterator_to_array($rii);
+$files = array(); 
+
+foreach ($data as $file) {
+    if ($file->getExtension() != "mp3" ){ 
+        continue;
+    }
+$files[$file->getPathname()] = $file->getfilename() ;
+}
+
+// sort
+//asort($files);
+
+//shuffle
+uksort($files, function() { return rand() > rand(); });
+
+
+foreach ($files as $path_file => $filename) {
+	
+	echo '<li class="current-song"><a href="'.$path_file.'">'.$filename.'</a></li>'; 
+}
+
+print ' </ul>'; 
+
   ?>
     
     <script src="https://code.jquery.com/jquery-2.2.0.js"></script>
