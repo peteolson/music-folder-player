@@ -12,11 +12,27 @@
 </head>
 
 <body>
- <br>
+	<p>Deepspace One</p>
+<audio id="audio1" controls>
+  <source src="http://ice1.somafm.com/deepspaceone-128-mp3">
+Your browser doesn't support HTML5. Maybe you should upgrade.
+</audio>
+<p>DroneZone</p>
+<audio id="audio1" controls>
+  <source src="http://ice3.somafm.com/dronezone-128-mp3">
+Your browser doesn't support HTML5. Maybe you should upgrade.
+</audio>
+<p>Space Station</p>
+<audio id="audio1" controls>
+  <source src="http://ice1.somafm.com/spacestation-128-mp3">
+Your browser doesn't support HTML5. Maybe you should upgrade.
+</audio>
+
+<p>Library Player</p>
  <audio src="" controls id="audioPlayer">
         Sorry, your browser doesn't support html5!
     </audio>
-    <p>Shuffling...</p>
+    
     
      <p id="now_playing"></p>
  
@@ -198,16 +214,16 @@ foreach ($data as $file) {
 $files[$file->getPathname()] = $file->getfilename() ;
 }
 
-// sort
+/* sort */ 
 //asort($files);
 
-//shuffle
+/* shuffle */
 uksort($files, function() { return rand() > rand(); });
 
 
 foreach ($files as $path_file => $filename) {
 	
-	echo '<li class="current-song"><a href="'.$path_file.'">'.$filename.'</a></li>'; 
+	echo '<li class="current-song"><a href="'.$path_file.'">'.trim($filename, ".mp3").'</a></li>'; 
 }
 
 print ' </ul>'; 
